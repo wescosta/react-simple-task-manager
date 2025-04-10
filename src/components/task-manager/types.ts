@@ -5,9 +5,3 @@ export interface Task {
 }
 
 export type FilterType = 'all' | 'completed' | 'pending';
-
-export interface TaskItemProps {
-  task: Task;
-  onDelete: (id: number) => void;
-  onToggle: (id: number) => void;
-}

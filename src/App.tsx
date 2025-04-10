@@ -1,8 +1,8 @@
 import React from "react";
 
-import TaskManager from "./components/TaskManager";
+import { TaskManager } from "./components/task-manager";
 
-function App() {
+export function App() {
   return (
     <div className="min-h-screen bg-gray-100 p-4">
       <header className="text-center mb-4">
@@ -13,5 +13,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
