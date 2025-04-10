@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import type { TaskItemProps } from "./types";
-import { Button } from "../../../design-system";
+import { Button, ConfirmDialog } from "../../../design-system";
 
 export const TaskItem: React.FC<TaskItemProps> = ({ task, onDelete, onToggle }) => {
+  const [showConfirmDialog, setShowConfirmDialog] = useState(false);
+
+  const toggleConfirmDialog = () => {
+    setShowConfirmDialog((open) => !open);
+  };
+  
+  const handleConfirmDelete = () => {
+    onDelete(task.id);
+    toggleConfirmDialog();
+  };
+  
   return (
     <li className="flex items-center justify-between border-b py-3 px-2 hover:bg-gray-50">
       <div className="flex items-center gap-2">
@@ -19,10 +30,20 @@ export const TaskItem: React.FC<TaskItemProps> = ({ task, onDelete, onToggle }) 
       <Button
         variant="danger"
         className="px-3 py-1 text-sm"
-        onClick={() => onDelete(task.id)}
+        onClick={toggleConfirmDialog}
       >
         Delete
       </Button>
+      
+      <ConfirmDialog
+        isOpen={showConfirmDialog}
+        onConfirm={handleConfirmDelete}
+        onCancel={toggleConfirmDialog}
+        title="Delete Task"
+        cancelLabel="Cancel"
+        confirmLabel="Delete"
+        message={`Are you sure you want to delete "${task.title}"?`}
+      />
     </li>
   );
 };
