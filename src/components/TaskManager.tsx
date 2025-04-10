@@ -10,10 +10,10 @@ const TaskManager = () => {
   const [filter, setFilter] = useState("all");
   const [newTask, setNewTask] = useState<string>();
 
-  // Intentional bug: The filter conditions are reversed.
+  // Fixed filter conditions
   const filteredTasks = tasks.filter((task) => {
-    if (filter === "completed") return task.completed === false;
-    if (filter === "pending") return task.completed === true;
+    if (filter === "completed") return task.completed === true;
+    if (filter === "pending") return task.completed === false;
     return true;
   });
 
