@@ -1,5 +1,4 @@
-import { FilterType } from "../filter/types";
-import { Task } from "../types";
+import { Task, FilterType } from "./models";
 
 export const getFilteredTasks = (tasks: Task[], filter: FilterType): Task[] => {
   return tasks.filter((task) => {
@@ -8,6 +7,7 @@ export const getFilteredTasks = (tasks: Task[], filter: FilterType): Task[] => {
     return true;
   });
 };
+
 export const generateTaskId = (tasks: Task[]): number => {
   return tasks.length > 0
     ? Math.max(...tasks.map(task => task.id)) + 1

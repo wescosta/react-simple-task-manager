@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "../../design-system";
+import { Button } from "../../../design-system";
 import { TaskFilterProps } from "./types";
 
 export const TaskFilter: React.FC<TaskFilterProps> = ({ 

@@ -1,1 +1,1 @@
-export * from "./manager/TaskManager"
+export * from "./components/manager/TaskManager";
