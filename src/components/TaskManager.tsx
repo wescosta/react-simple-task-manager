@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 
 import TaskItem from "./TaskItem";
+import { Task, FilterType } from "./types";
 
 const TaskManager = () => {
-  const [tasks, setTasks] = useState<any[]>([
+  const [tasks, setTasks] = useState<Task[]>([
     { id: 1, title: "Buy groceries", completed: false },
     { id: 2, title: "Clean the house", completed: true },
   ]);
-  const [filter, setFilter] = useState("all");
-  const [newTask, setNewTask] = useState<string>();
+  const [filter, setFilter] = useState<FilterType>('all');
+  const [newTask, setNewTask] = useState<string>("");
 
   // Fixed filter conditions
   const filteredTasks = tasks.filter((task) => {
@@ -19,12 +20,14 @@ const TaskManager = () => {
 
   const handleAddTask = (e: React.FormEvent) => {
     e.preventDefault();
-    if (newTask!.trim() === "") return;
-    const newTaskObj = {
+    if (newTask.trim() === "") return;
+
+    const newTaskObj: Task = {
       id: tasks.length + 1,
-      name: newTask,
+      title: newTask,
       completed: false,
     };
+    
     setTasks([...tasks, newTaskObj]);
     setNewTask("");
   };
@@ -36,9 +39,10 @@ const TaskManager = () => {
   };
 
   const toggleTaskCompletion = (id: number) => {
-    const task = tasks.find((task) => task.id === id);
-
-    task.isCompleted = !task.isCompleted;
+    const updatedTasks = tasks.map((task) => 
+      task.id === id ? { ...task, completed: !task.completed } : task
+    );
+    setTasks(updatedTasks);
   };
 
   return (
