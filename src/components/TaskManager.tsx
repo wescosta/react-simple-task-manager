@@ -42,43 +42,60 @@ const TaskManager = () => {
   };
 
   return (
-    <div className="container mx-auto bg-white p-4 rounded shadow">
-      <form onSubmit={handleAddTask} className="mb-4 flex">
+    <div className="container mx-auto bg-white p-6 rounded-lg shadow-md max-w-2xl my-8">
+      <form onSubmit={handleAddTask} className="mb-6 flex">
         <input
           type="text"
           placeholder="New task..."
           value={newTask}
           onChange={(e) => setNewTask(e.target.value)}
-          className="flex-grow border rounded-l py-2 px-3"
+          className="flex-grow border border-gray-300 rounded-l-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
-        <button type="submit" className="bg-blue-500 text-white px-4 rounded-r">
+        <button 
+          type="submit" 
+          className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-r-md transition-colors font-medium"
+        >
           Add
         </button>
       </form>
-      <div className="flex justify-around mb-4">
-        <button onClick={() => setFilter("all")} className="text-gray-700">
+      
+      <div className="flex justify-center space-x-4 mb-6">
+        <button 
+          onClick={() => setFilter("all")} 
+          className={`px-4 py-2 rounded-md transition-colors ${filter === 'all' ? 'bg-blue-500 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
+        >
           All
         </button>
         <button
           onClick={() => setFilter("completed")}
-          className="text-gray-700"
+          className={`px-4 py-2 rounded-md transition-colors ${filter === 'completed' ? 'bg-blue-500 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
         >
           Completed
         </button>
-        <button onClick={() => setFilter("pending")} className="text-gray-700">
+        <button 
+          onClick={() => setFilter("pending")} 
+          className={`px-4 py-2 rounded-md transition-colors ${filter === 'pending' ? 'bg-blue-500 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
+        >
           Pending
         </button>
       </div>
-      <ul>
-        {filteredTasks.map((task) => (
-          <TaskItem
-            key={task.id}
-            task={task}
-            onDelete={handleDeleteTask}
-            onToggle={toggleTaskCompletion}
-          />
-        ))}
-      </ul>
+      
+      <div className="bg-gray-50 rounded-md border border-gray-100">
+        {filteredTasks.length > 0 ? (
+          <ul>
+            {filteredTasks.map((task) => (
+              <TaskItem
+                key={task.id}
+                task={task}
+                onDelete={handleDeleteTask}
+                onToggle={toggleTaskCompletion}
+              />
+            ))}
+          </ul>
+        ) : (
+          <p className="text-gray-500 text-center py-8">No tasks found</p>
+        )}
+      </div>
     </div>
   );
 };
