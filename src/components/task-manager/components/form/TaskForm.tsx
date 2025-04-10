@@ -14,16 +14,16 @@ export const TaskForm: React.FC<TaskFormProps> = ({ onAddTask }) => {
   }, [newTask, onAddTask]);
 
   return (
-    <form onSubmit={handleSubmit} className="mb-6 flex">
+    <form onSubmit={handleSubmit} className="mb-4 flex flex-col space-y-2 sm:mb-6 sm:flex-row sm:space-y-0">
       <Input
         value={newTask}
         placeholder="New task..."
-        className="flex-grow rounded-l-md"
+        className="flex-grow rounded-md text-sm sm:text-base sm:rounded-r-none"
         onChange={(e) => setNewTask(e.target.value)}
       />
       <Button 
         type="submit" 
-        className="rounded-l-none rounded-r-md px-6"
+        className="rounded-md w-full px-3 text-sm sm:text-base sm:w-auto sm:rounded-l-none sm:px-6"
       >
         Add
       </Button>

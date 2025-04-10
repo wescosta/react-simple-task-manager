@@ -21,7 +21,7 @@ export const TaskManager: React.FC = () => {
   }, [fetchTasks]); 
 
   return (
-    <div className="container mx-auto bg-white p-6 rounded-lg shadow-md max-w-2xl my-8">
+    <div className="container mx-auto bg-white p-3 sm:p-6 rounded-lg shadow-md max-w-2xl my-4 sm:my-8">
       <TaskForm onAddTask={addTask} />
 
       <TaskFilter

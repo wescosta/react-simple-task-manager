@@ -17,11 +17,11 @@ export const TaskItem: React.FC<TaskItemProps> = ({ task, onDelete, onToggle }) 
   };
   
   return (
-    <li className="flex items-center justify-between border-b py-3 px-2 hover:bg-gray-50">
-      <div className="flex items-center gap-2">
+    <li className="flex items-center justify-between border-b py-2 sm:py-3 px-2 hover:bg-gray-50">
+      <div className="flex items-center gap-2 flex-1 min-w-0">
         <span
           onClick={() => onToggle(task.id)}
-          className={`cursor-pointer ${
+          className={`cursor-pointer text-sm sm:text-base truncate ${
             task.completed ? "line-through text-green-500" : "text-black"
           }`}
         >
@@ -31,7 +31,7 @@ export const TaskItem: React.FC<TaskItemProps> = ({ task, onDelete, onToggle }) 
 
       <Button
         variant="danger"
-        className="px-3 py-1 text-sm"
+        className="px-2 sm:px-3 py-1 text-xs sm:text-sm ml-2 flex-shrink-0"
         onClick={toggleConfirmDialog}
       >
         Delete
