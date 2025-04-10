@@ -1,5 +1,5 @@
 import React from "react";
-import { TaskItemProps } from "./types";
+import type { TaskItemProps } from "./types";
 import { Button } from "../../../design-system";
 
 export const TaskItem: React.FC<TaskItemProps> = ({ task, onDelete, onToggle }) => {

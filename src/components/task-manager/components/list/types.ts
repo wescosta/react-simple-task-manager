@@ -1,4 +1,4 @@
-import { Task } from "../../store/models";
+import type { Task } from "../../store/models";
 
 export interface TasksListProps {
   tasks: Task[];

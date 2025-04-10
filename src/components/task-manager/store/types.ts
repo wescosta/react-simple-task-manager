@@ -1,4 +1,4 @@
-import { Task, FilterType } from './models';
+import type { Task, FilterType } from './models';
 
 export interface TaskState {
   tasks: Task[];

@@ -1,6 +1,6 @@
 import { create } from 'zustand';
-import { TaskState } from './types';
-import { FilterType, Task } from './models';
+import type { TaskState } from './types';
+import type { FilterType, Task } from './models';
 import { generateTaskId, getFilteredTasks } from './helpers';
 
 const initialTasks: Task[] = [

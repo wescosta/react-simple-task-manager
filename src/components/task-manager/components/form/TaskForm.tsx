@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from "react";
-import { TaskFormProps } from "./types";
+import type { TaskFormProps } from "./types";
 import { Button, Input } from "../../../design-system";
 
 export const TaskForm: React.FC<TaskFormProps> = ({ onAddTask }) => {

@@ -1,6 +1,6 @@
 import React from "react";
 import { TaskItem } from "../item/TaskItem";
-import { TasksListProps } from "./types";
+import type { TasksListProps } from "./types";
 
 export const TasksList: React.FC<TasksListProps> = ({
   tasks,

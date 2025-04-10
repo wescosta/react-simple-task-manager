@@ -1,10 +1,9 @@
 import React from "react";
 
 import { useTaskStore } from "../../store";
-import { TaskManagerProps } from "./types";
 import { TaskFilter, TaskForm, TasksList } from "..";
 
-export const TaskManager: React.FC<TaskManagerProps> = ({ initialTasks = [] }) => {
+export const TaskManager: React.FC = () => {
   const { 
     filteredTasks,
     filter,

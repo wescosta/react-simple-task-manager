@@ -1,4 +1,4 @@
-import { FilterType } from "../../store/models";
+import type { FilterType } from "../../store/models";
 
 export interface TaskFilterProps {
   currentFilter: FilterType;
