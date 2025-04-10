@@ -1,17 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-import { useTaskStore } from "../../store";
+import { useTasksStore } from "../../store";
 import { TaskFilter, TaskForm, TasksList } from "..";
+import { LoadingIndicator } from "../../../design-system";
 
 export const TaskManager: React.FC = () => {
-  const { 
+  const {
     filteredTasks,
     filter,
     addTask,
     deleteTask,
     toggleTask,
-    setFilter
-  } = useTaskStore();
+    setFilter,
+    fetchTasks,
+    isLoading
+  } = useTasksStore();
+
+  useEffect(() => {
+    fetchTasks();
+  }, [fetchTasks]); 
 
   return (
     <div className="container mx-auto bg-white p-6 rounded-lg shadow-md max-w-2xl my-8">
@@ -22,11 +29,15 @@ export const TaskManager: React.FC = () => {
         onFilterChange={setFilter}
       />
 
-      <TasksList
-        tasks={filteredTasks}
-        onDelete={deleteTask}
-        onToggle={toggleTask}
-      />
+      {isLoading ? (
+        <LoadingIndicator />
+      ) : (
+        <TasksList
+          tasks={filteredTasks}
+          onDelete={deleteTask}
+          onToggle={toggleTask}
+        />
+      )}
     </div>
   );
 };

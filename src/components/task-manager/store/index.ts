@@ -1,2 +1,2 @@
 export * from './models';
-export { useTasksStore as useTaskStore } from './taskStore';
+export { useTasksStore } from './taskStore';
