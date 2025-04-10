@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import type { TaskItemProps } from "./types";
-import { Button, ConfirmDialog } from "../../../design-system";
+import { Button, ConfirmDialog, useToast } from "../../../design-system";
 
 export const TaskItem: React.FC<TaskItemProps> = ({ task, onDelete, onToggle }) => {
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
+  const { showToast } = useToast();
 
   const toggleConfirmDialog = () => {
     setShowConfirmDialog((open) => !open);
@@ -12,6 +13,7 @@ export const TaskItem: React.FC<TaskItemProps> = ({ task, onDelete, onToggle }) 
   const handleConfirmDelete = () => {
     onDelete(task.id);
     toggleConfirmDialog();
+    showToast(`Task "${task.title}" deleted successfully`);
   };
   
   return (
