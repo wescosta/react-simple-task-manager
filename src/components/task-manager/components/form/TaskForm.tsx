@@ -4,14 +4,15 @@ import { Button, Input } from "../../../design-system";
 
 export const TaskForm: React.FC<TaskFormProps> = ({ onAddTask }) => {
   const [newTask, setNewTask] = useState<string>("");
+  const sanitizedTask = newTask.trim();
 
   const handleSubmit = useCallback((e: React.FormEvent) => {
     e.preventDefault();
-    if (newTask.trim() === "") return;
+    if (!sanitizedTask) return;
 
-    onAddTask(newTask);
+    onAddTask(sanitizedTask);
     setNewTask("");
-  }, [newTask, onAddTask]);
+  }, [sanitizedTask, onAddTask]);
 
   return (
     <form onSubmit={handleSubmit} className="mb-4 flex flex-col space-y-2 sm:mb-6 sm:flex-row sm:space-y-0">
@@ -22,7 +23,8 @@ export const TaskForm: React.FC<TaskFormProps> = ({ onAddTask }) => {
         onChange={(e) => setNewTask(e.target.value)}
       />
       <Button 
-        type="submit" 
+        type="submit"
+        disabled={!sanitizedTask}
         className="rounded-md w-full px-3 text-sm sm:text-base sm:w-auto sm:rounded-l-none sm:px-6"
       >
         Add
