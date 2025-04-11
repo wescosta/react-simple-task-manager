@@ -35,8 +35,8 @@ export const useTasksStore = create<TasksState>((set, get) => ({
 
     set(state => {
       const updatedTasks = [
-        ...state.tasks,
-        { ...newTaskData, id: tempId }
+        { ...newTaskData, id: tempId },
+        ...state.tasks
       ];
 
       return {

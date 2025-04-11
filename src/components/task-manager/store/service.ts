@@ -5,7 +5,7 @@ export async function fetchTasks(): Promise<Task[]> {
   const { data, error } = await supabase
     .from('tasks')
     .select('*')
-    .order('id', { ascending: true });
+    .order('updated_at', { ascending: false });
 
   if (error) {
     console.error('Error fetching tasks:', error);
