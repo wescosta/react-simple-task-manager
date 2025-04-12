@@ -47,12 +47,13 @@ jobs:
       - name: Run linting
         run: pnpm lint
 
-      - name: Run tests
-        run: pnpm test
-
-      - name: Build application
+      - name: Build application and dependencies
         if: ${{ success() }}
         run: pnpm build
+
+      - name: Run tests
+        if: ${{ success() }}
+        run: pnpm test
 
       - name: Deploy to Vercel
         if: ${{ success() }}
