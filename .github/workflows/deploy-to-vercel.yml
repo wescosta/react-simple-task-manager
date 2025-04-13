@@ -66,7 +66,9 @@ jobs:
         run: pnpm --filter "@lateral/task-manager" test
 
       - name: Deploy to Vercel
-        if: ${{ success() }}
+        # if: ${{ success() }}
+        # Temporarily disabled because this project is configured to use the Vercel GitHub integration for deployment
+        if: false 
         uses: amondnet/vercel-action@v25
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
