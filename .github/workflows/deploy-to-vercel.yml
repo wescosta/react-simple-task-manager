@@ -47,13 +47,21 @@ jobs:
       - name: Run linting
         run: pnpm lint
 
-      - name: Build application and dependencies
+      - name: Build Design System package
         if: ${{ success() }}
-        run: pnpm build
+        run: pnpm build:ds
+        
+      - name: Run Design System tests
+        if: ${{ success() }}
+        run: pnpm --filter "@lateral/design-system" test
 
-      - name: Run tests
+      - name: Build Task Manager app
         if: ${{ success() }}
-        run: pnpm test
+        run: pnpm --filter "@lateral/task-manager" build
+        
+      - name: Run Task Manager tests
+        if: ${{ success() }}
+        run: pnpm --filter "@lateral/task-manager" test
 
       - name: Deploy to Vercel
         if: ${{ success() }}
