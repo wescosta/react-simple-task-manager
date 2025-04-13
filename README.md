@@ -57,43 +57,44 @@ The Task Manager app includes the following core features:
 - **Deleting Tasks:** Remove tasks from the list.
 - **Filtering Tasks:** Filter tasks by status (All, Completed, Pending).
 
-### Issues to Address
+### Issues to Addressed
 
-While reviewing the project, please identify and resolve the following issues:
+While reviewing the project, I have identified and resolved the following issues:
 
 1. **Task Filter Bug:**
 
-   - The filter functionality is not working as expected. Changing the filter does not update the task list correctly.
+   - The filter functionality is now working as expected. Changing the filter updates the task list correctly.
 
 2. **Task Deletion Issue:**
 
-   - Deleting a task does not immediately update the UI, causing a delay or inconsistency in the displayed task list.
+   - Deleting a task immediately updates the UI. A confirmation dialog has been added as well.
 
 3. **Styling Inconsistencies:**
 
-   - Some UI elements are not using Tailwind CSS classes consistently. Ensure the layout, spacing, and colors align with the provided design guidelines.
+   - UI elements are using Tailwind CSS classes consistently. Layout, spacing, and colors have been updated to align with the provided design guidelines.
 
 4. **TypeScript Warnings/Errors:**
 
-   - Several components may have missing or incorrect type definitions. Address all TypeScript warnings to ensure robust type safety.
+   - Type definitions have been added. All TypeScript warnings have been addressed to ensure robust type safety.
 
 5. **Code Refactoring:**
-   - The current code structure has redundant logic and lacks modularity. Refactor the code to improve readability and maintainability.
+   - The code structure has been refactored using a monorepo to improve readability and maintainability.
 
 ### Optional Enhancements
 
 If time permits, consider implementing one or more of the following:
 
 - **Persistence:**
-  - Implement functionality to save and retrieve tasks from local storage or a remote API, ensuring that the task list persists across page reloads.
+  - Implemented functionality to save and retrieve tasks from a remote API using Supabse, ensuring that the task list persists across page reloads.
 - **Improved UI/UX:**
-  - Enhance the user interface with additional styling improvements or animations to improve user experience.
-  - Implement a confirmation dialog when deleting a task.
+  - Enhanced the user interface with additional styling improvements improve user experience, like a sticky form. So while the user scrolls down, he/she can still see the add form. This is specially usefeull on mobile.
+  - Implemented a confirmation dialog when deleting a task.
+  - A mobile first, responsive design has been implemented to improve user experience on mobile 
 - **Improved UI/UX:**
-  - Deploy the app
-  - Create a CI/CD pipeline that will automatically deploy/release the app when changes were made.
+  - The app has been depoyed to Vercel. You can access it on this link: https://react-simple-task-manager.vercel.app/
+  - A CI/CD pipeline has been created to automatically deploy/release the app when changes were made. (minor issues have to be address later)
 - **Unit Testing:**
-  - Write tests for key components using your preferred testing framework (e.g., Jest, React Testing Library).
+  - Unit tests for key components have been added using Vitest
 
 ## Submission Instructions
 
